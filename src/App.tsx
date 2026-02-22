@@ -11,6 +11,7 @@ import {
   Mail,
   ExternalLink,
   ArrowDown,
+  Award,
   Briefcase,
   Terminal,
   Server,
@@ -26,9 +27,9 @@ const skills = [
   { name: "Spring Boot", icon: Server },
   { name: "REST APIs", icon: Code2 },
   { name: "Microservices", icon: Server },
-  { name: "SQL / PostgreSQL", icon: Database },
+  { name: "MySQL / MongoDb", icon: Database },
   { name: "Git & GitHub", icon: Github },
-  { name: "Maven / Gradle", icon: Terminal },
+  { name: "Maven", icon: Terminal },
   { name: "Docker", icon: Terminal },
   { name: "JUnit & Mockito", icon: Code2 },
   { name: "Hibernate / JPA", icon: Database },
@@ -36,45 +37,60 @@ const skills = [
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Hospital Management System",
     description:
-      "A full-stack e-commerce backend built with Spring Boot featuring user authentication, product management, cart system, and order processing with RESTful APIs.",
-    tech: ["Java", "Spring Boot", "PostgreSQL", "JWT", "Docker"],
+      "Developed a Hospital Management System using Spring Boot and microservices architecture, building secure RESTful APIs for core operations. Implemented Spring Security for role-based access, integrated Hibernate with MySQL for data persistence, applied layered architecture, and ensured reliability through testing, validation, and exception handling.",
+    tech: ["Spring Boot", "MySQL", "JWT", "Spring Security", "Hibernate", "RESTful APIs", "Microservices"],
+    github: "https://github.com/AnkitKumar7243/Hospital_Management_System",
+    live: "#",
+  },
+  {
+    title: "Enquiry Management System (EMS)",
+    description:
+      "Developed a web-based CRUD application using Servlets, JSP, and JDBC with MVC architecture and secure session handling. Improved processing efficiency by 25% and ensured reliable deployment using Apache Tomcat with MySQL integration.",
+    tech: ["Java", "Servlets", "JSP", "JDBC", "MySQL"],
     github: "#",
     live: "#",
   },
   {
-    title: "Task Management API",
+    title: "Pizza Billing System",
     description:
-      "RESTful API for task and project management with role-based access control, real-time notifications using WebSockets, and comprehensive API documentation with Swagger.",
-    tech: ["Java", "Spring Security", "WebSocket", "Swagger", "MySQL"],
-    github: "#",
-    live: "#",
-  },
-  {
-    title: "URL Shortener Service",
-    description:
-      "High-performance URL shortening microservice with analytics dashboard, rate limiting, and caching layer. Handles thousands of redirects per second.",
-    tech: ["Java", "Spring Boot", "Redis", "MongoDB", "JUnit"],
-    github: "#",
+      "Developed a Pizza Billing System using Core Java OOP principles with dynamic customization features. Implemented real-time bill calculation and modular class design, ensuring scalable architecture, clean code structure, and easy future feature enhancements.",
+    tech: ["Java", "OPPs", "SQL"],
+    github: "https://github.com/AnkitKumar7243/Pizza-Project",
     live: "#",
   },
 ];
 
 const experience = [
   {
-    role: "Java Developer",
-    company: "Tech Solutions Inc.",
-    period: "2023 — Present",
+    role: "Java Full Stack Developer",
+    company: "PSA",
+    period: "2025 — Present",
     description:
-      "Building scalable microservices and REST APIs for enterprise clients. Reduced API response times by 40% through query optimization and caching strategies.",
+      "Developed and maintained RESTful APIs using Java and Spring Boot within a microservices architecture. Implemented Apache Kafka for event-driven communication, managed database operations with Spring Data JPA and MySQL, and improved backend stability through debugging. Containerized applications using Docker, automated CI/CD with Jenkins, and deployed services on AWS using Terraform. ",
   },
   {
-    role: "Junior Java Developer",
-    company: "StartUp Labs",
-    period: "2021 — 2023",
+    role: "Java Intern",
+    company: "Internshala",
+    period: "2024 — 2024",
     description:
-      "Developed backend services using Spring Boot and Hibernate. Collaborated with cross-functional teams to deliver features on schedule with 95%+ test coverage.",
+      "Completed an 8-week Core Java training (June–August 2024), building strong fundamentals in Java syntax, programming logic, and OOP concepts. Gained hands-on experience with Advanced Java, JDBC for database connectivity, and basic GUI development. Applied learning through practical exercises and mini-projects, strengthening problem-solving and application development skills",
+  },
+];
+
+const certifications = [
+  {
+    name: "Java Full Stack Developer",
+    issuer: "PSA",
+    date: "2026",
+    credentialUrl: "#",
+  },
+  {
+    name: "Core Java",
+    issuer: "Inter Shala",
+    date: "2024",
+    credentialUrl: "https://drive.google.com/file/d/1CdMp-bV8vEZILkk2gFxH6uT9rBHHRR__/view",
   },
 ];
 
@@ -145,7 +161,7 @@ function App() {
           </a>
 
           <ul className="hidden sm:flex items-center gap-6 text-sm text-muted-foreground">
-            {["About", "Skills", "Projects", "Experience", "Contact"].map(
+            {["About", "Skills", "Projects", "Experience", "Certifications", "Contact"].map(
               (item) => (
                 <li key={item}>
                   <a
@@ -337,6 +353,53 @@ function App() {
 
       <Separator className="mx-auto max-w-3xl" />
 
+      {/* ---- Certifications ---- */}
+      <Section id="certifications">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight">Certifications</h2>
+          <p className="mt-3 text-muted-foreground">
+            Professional credentials I've earned.
+          </p>
+
+          <div className="mt-10 space-y-4">
+            {certifications.map((cert) => (
+              <Card
+                key={cert.name}
+                className="text-left border-border/40 hover:border-border transition-colors"
+              >
+                <CardContent className="pt-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <div className="flex items-center gap-2">
+                      <Award className="h-4 w-4 text-muted-foreground" />
+                      <h3 className="font-semibold">{cert.name}</h3>
+                    </div>
+                    <span className="text-sm text-muted-foreground">
+                      {cert.date}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {cert.issuer}
+                  </p>
+                  {cert.credentialUrl && cert.credentialUrl !== "#" && (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      View Credential
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Separator className="mx-auto max-w-3xl" />
+
       {/* ---- Contact ---- */}
       <Section id="contact">
         <div className="mx-auto max-w-3xl text-center">
@@ -348,19 +411,19 @@ function App() {
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="outline" asChild className="gap-2 w-full sm:w-auto">
-              <a href="mailto:ankit@example.com">
+              <a href="mailto:ankitkumaryadav7243@gmail.com">
                 <Mail className="h-4 w-4" />
-                ankit@example.com
+                ankitkumaryadav7243@gmail.com
               </a>
             </Button>
             <Button variant="outline" asChild className="gap-2 w-full sm:w-auto">
-              <a href="https://github.com/ankit" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AnkitKumar7243" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 GitHub
               </a>
             </Button>
             <Button variant="outline" asChild className="gap-2 w-full sm:w-auto">
-              <a href="https://linkedin.com/in/ankit" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/ankit-kumar9693/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
